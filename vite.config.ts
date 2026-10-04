@@ -32,4 +32,8 @@ function dataSourceStaticPlugin(): Plugin {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), dataSourceStaticPlugin()],
+  define: {
+    'process.env': {},
+    'global': 'globalThis',
+  },
 })

@@ -30,7 +30,8 @@ const FALLBACK_GEMINI_MODELS = [
 let cachedGeminiModel: string | null = null;
 
 export function getAISettings(): AISettings {
-  const envKey = (import.meta as any)?.env?.VITE_GEMINI_API_KEY || (import.meta as any)?.env?.VITE_OPENAI_API_KEY || process?.env?.VITE_GEMINI_API_KEY || process?.env?.GEMINI_API_KEY || '';
+  const procEnv = typeof process !== 'undefined' && process?.env ? process.env : {} as Record<string, string>;
+  const envKey = (import.meta as any)?.env?.VITE_GEMINI_API_KEY || (import.meta as any)?.env?.VITE_OPENAI_API_KEY || procEnv.VITE_GEMINI_API_KEY || procEnv.GEMINI_API_KEY || '';
   const storedKey = typeof localStorage !== 'undefined' ? (localStorage.getItem(STORAGE_KEY_API) || envKey) : envKey;
   const storedProvider = typeof localStorage !== 'undefined' ? ((localStorage.getItem(STORAGE_KEY_PROVIDER) as AIProvider) || 'gemini') : 'gemini';
   let storedModel = typeof localStorage !== 'undefined' ? (localStorage.getItem(STORAGE_KEY_MODEL) || cachedGeminiModel) : cachedGeminiModel;

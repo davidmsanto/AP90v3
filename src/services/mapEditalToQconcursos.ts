@@ -14,14 +14,17 @@ let cachedTaxonomia: TaxonomiaDisciplina[] | null = null;
 export async function loadTaxonomiaQC(): Promise<TaxonomiaDisciplina[]> {
   if (cachedTaxonomia) return cachedTaxonomia;
 
-  if (typeof window === 'undefined') {
+  if (typeof window === 'undefined' && typeof process !== 'undefined' && (process as any).versions?.node) {
     try {
-      const fs = await import('fs');
-      const path = await import('path');
+      const fsMod = 'fs';
+      const pathMod = 'path';
+      const fs = await import(/* @vite-ignore */ fsMod);
+      const path = await import(/* @vite-ignore */ pathMod);
+      const cwd = typeof process.cwd === 'function' ? process.cwd() : '';
       const possiblePaths = [
-        path.resolve(process.cwd(), 'data-source/taxonomia_qc_full.json'),
-        path.resolve(process.cwd(), 'data-source/BuscaQuest/taxonomia_qc_full.json'),
-        path.resolve(process.cwd(), 'public/data-source/taxonomia_qc_full.json'),
+        path.resolve(cwd, 'data-source/taxonomia_qc_full.json'),
+        path.resolve(cwd, 'data-source/BuscaQuest/taxonomia_qc_full.json'),
+        path.resolve(cwd, 'public/data-source/taxonomia_qc_full.json'),
       ];
       for (const p of possiblePaths) {
         if (fs.existsSync(p)) {
