@@ -14,20 +14,20 @@ export const Card: React.FC<CardProps> = ({
   ...props
 }) => {
   const variantStyles = {
-    default: 'bg-surface-card border-surface-border text-text-primary',
-    elevated: 'bg-surface-elevated border-surface-border-elevated text-text-primary shadow-lg shadow-black/40',
+    default: 'glass-card text-text-primary rounded-2xl',
+    elevated: 'glass-card-elevated text-text-primary rounded-2xl border-white/15',
   };
 
   const paddingStyles = {
     none: 'p-0',
     sm: 'p-4', // 16px
-    md: 'p-5', // 20px
-    lg: 'p-6', // 24px
+    md: 'p-5 md:p-6', // 20-24px
+    lg: 'p-6 md:p-7', // 24-28px
   };
 
   return (
     <div
-      className={`rounded-card border transition-colors ${variantStyles[variant]} ${paddingStyles[padding]} ${className}`}
+      className={`transition-all duration-200 ${variantStyles[variant]} ${paddingStyles[padding]} ${className}`}
       {...props}
     >
       {children}

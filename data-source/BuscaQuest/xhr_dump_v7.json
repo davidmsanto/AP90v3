@@ -1,0 +1,1036 @@
+{
+  "https://brokk.qconcursos.com/product/1/disciplines?per_page=15": [
+    {
+      "id": 213,
+      "nome": "Administração de Recursos Materiais"
+    },
+    {
+      "id": 33,
+      "nome": "Administração Financeira e Orçamentária"
+    },
+    {
+      "id": 21,
+      "nome": "Administração Geral"
+    },
+    {
+      "id": 26,
+      "nome": "Administração Pública"
+    },
+    {
+      "id": 281,
+      "nome": "Agrimensura"
+    },
+    {
+      "id": 564,
+      "nome": "Agropecuária"
+    },
+    {
+      "id": 561,
+      "nome": "Alemão"
+    },
+    {
+      "id": 98,
+      "nome": "Algoritmos e Estrutura de Dados"
+    },
+    {
+      "id": 235,
+      "nome": "Análise de Balanços"
+    },
+    {
+      "id": 273,
+      "nome": "Antropologia"
+    },
+    {
+      "id": 272,
+      "nome": "Arqueologia"
+    },
+    {
+      "id": 168,
+      "nome": "Arquitetura"
+    },
+    {
+      "id": 93,
+      "nome": "Arquitetura de Computadores"
+    },
+    {
+      "id": 503,
+      "nome": "Arquitetura de Software"
+    },
+    {
+      "id": 20,
+      "nome": "Arquivologia"
+    },
+    {
+      "id": 283,
+      "nome": "Artes Cênicas"
+    },
+    {
+      "id": 82,
+      "nome": "Artes Gráficas"
+    },
+    {
+      "id": 301,
+      "nome": "Artes Plásticas"
+    },
+    {
+      "id": 302,
+      "nome": "Artes Visuais"
+    },
+    {
+      "id": 587,
+      "nome": "Astronomia"
+    },
+    {
+      "id": 58,
+      "nome": "Atendimento (Escriturário)"
+    },
+    {
+      "id": 187,
+      "nome": "Atendimento ao Público"
+    },
+    {
+      "id": 56,
+      "nome": "Atualidades"
+    },
+    {
+      "id": 245,
+      "nome": "Atuária"
+    },
+    {
+      "id": 523,
+      "nome": "Áudio e Vídeo"
+    },
+    {
+      "id": 34,
+      "nome": "Auditoria"
+    },
+    {
+      "id": 225,
+      "nome": "Auditoria de Obras Públicas"
+    },
+    {
+      "id": 502,
+      "nome": "Auditoria Governamental"
+    },
+    {
+      "id": 305,
+      "nome": "Automação"
+    },
+    {
+      "id": 96,
+      "nome": "Banco de Dados"
+    },
+    {
+      "id": 169,
+      "nome": "Biblioteconomia"
+    },
+    {
+      "id": 244,
+      "nome": "Biologia"
+    },
+    {
+      "id": 299,
+      "nome": "Biomedicina - Análises Clínicas"
+    },
+    {
+      "id": 589,
+      "nome": "Braille"
+    },
+    {
+      "id": 565,
+      "nome": "Cartografia"
+    },
+    {
+      "id": 293,
+      "nome": "Ciência e Tecnologia"
+    },
+    {
+      "id": 253,
+      "nome": "Ciência Política"
+    },
+    {
+      "id": 566,
+      "nome": "Ciências"
+    },
+    {
+      "id": 567,
+      "nome": "Ciências Humanas"
+    },
+    {
+      "id": 562,
+      "nome": "Ciências Navais"
+    },
+    {
+      "id": 152,
+      "nome": "Comércio Internacional (Exterior)"
+    },
+    {
+      "id": 170,
+      "nome": "Comunicação Social"
+    },
+    {
+      "id": 57,
+      "nome": "Conhecimentos Bancários"
+    },
+    {
+      "id": 577,
+      "nome": "Conhecimentos de Serviços Gerais"
+    },
+    {
+      "id": 24,
+      "nome": "Conhecimentos Gerais"
+    },
+    {
+      "id": 107,
+      "nome": "Contabilidade de Custos"
+    },
+    {
+      "id": 35,
+      "nome": "Contabilidade Geral"
+    },
+    {
+      "id": 36,
+      "nome": "Contabilidade Pública"
+    },
+    {
+      "id": 66,
+      "nome": "Controle Externo"
+    },
+    {
+      "id": 530,
+      "nome": "Criminalística"
+    },
+    {
+      "id": 554,
+      "nome": "Criminologia"
+    },
+    {
+      "id": 318,
+      "nome": "Desenho Industrial"
+    },
+    {
+      "id": 317,
+      "nome": "Desenho Técnico"
+    },
+    {
+      "id": 501,
+      "nome": "Design Gráfico"
+    },
+    {
+      "id": 2,
+      "nome": "Direito Administrativo"
+    },
+    {
+      "id": 232,
+      "nome": "Direito Agrário"
+    },
+    {
+      "id": 76,
+      "nome": "Direito Ambiental"
+    },
+    {
+      "id": 8,
+      "nome": "Direito Civil"
+    },
+    {
+      "id": 3,
+      "nome": "Direito Constitucional"
+    },
+    {
+      "id": 233,
+      "nome": "Direito da Criança e do Adolescente - Estatuto da Criança e do Adolescente (ECA) - Lei nº 8.069 de 1990 "
+    },
+    {
+      "id": 593,
+      "nome": "Direito Digital "
+    },
+    {
+      "id": 89,
+      "nome": "Direito do Consumidor"
+    },
+    {
+      "id": 7,
+      "nome": "Direito do Trabalho"
+    },
+    {
+      "id": 551,
+      "nome": "Direito Econômico"
+    },
+    {
+      "id": 6,
+      "nome": "Direito Eleitoral"
+    },
+    {
+      "id": 166,
+      "nome": "Direito Empresarial (Comercial)"
+    },
+    {
+      "id": 14,
+      "nome": "Direito Financeiro"
+    },
+    {
+      "id": 90,
+      "nome": "Direito Internacional Privado"
+    },
+    {
+      "id": 42,
+      "nome": "Direito Internacional Público"
+    },
+    {
+      "id": 78,
+      "nome": "Direito Marítimo"
+    },
+    {
+      "id": 497,
+      "nome": "Direito Notarial e Registral"
+    },
+    {
+      "id": 9,
+      "nome": "Direito Penal"
+    },
+    {
+      "id": 203,
+      "nome": "Direito Penal Militar"
+    },
+    {
+      "id": 19,
+      "nome": "Direito Previdenciário"
+    },
+    {
+      "id": 12,
+      "nome": "Direito Processual Civil - CPC 1973"
+    },
+    {
+      "id": 560,
+      "nome": "Direito Processual Civil - Novo Código de Processo Civil - CPC 2015"
+    },
+    {
+      "id": 11,
+      "nome": "Direito Processual do Trabalho"
+    },
+    {
+      "id": 10,
+      "nome": "Direito Processual Penal"
+    },
+    {
+      "id": 204,
+      "nome": "Direito Processual Penal Militar"
+    },
+    {
+      "id": 211,
+      "nome": "Direito Sanitário"
+    },
+    {
+      "id": 18,
+      "nome": "Direito Tributário"
+    },
+    {
+      "id": 519,
+      "nome": "Direito Urbanístico"
+    },
+    {
+      "id": 214,
+      "nome": "Direitos Humanos"
+    },
+    {
+      "id": 191,
+      "nome": "Economia"
+    },
+    {
+      "id": 323,
+      "nome": "Edificações"
+    },
+    {
+      "id": 325,
+      "nome": "Educação Artística"
+    },
+    {
+      "id": 326,
+      "nome": "Educação Física"
+    },
+    {
+      "id": 327,
+      "nome": "Eletricidade"
+    },
+    {
+      "id": 329,
+      "nome": "Eletroeletrônica"
+    },
+    {
+      "id": 331,
+      "nome": "Eletrônica"
+    },
+    {
+      "id": 332,
+      "nome": "Eletrotécnica"
+    },
+    {
+      "id": 172,
+      "nome": "Enfermagem"
+    },
+    {
+      "id": 518,
+      "nome": "Engenharia Aeronáutica"
+    },
+    {
+      "id": 255,
+      "nome": "Engenharia Agrícola"
+    },
+    {
+      "id": 256,
+      "nome": "Engenharia Agronômica (Agronomia)"
+    },
+    {
+      "id": 259,
+      "nome": "Engenharia Ambiental e Sanitária"
+    },
+    {
+      "id": 336,
+      "nome": "Engenharia Biomédica"
+    },
+    {
+      "id": 578,
+      "nome": "Engenharia Cartográfica"
+    },
+    {
+      "id": 171,
+      "nome": "Engenharia Civil"
+    },
+    {
+      "id": 339,
+      "nome": "Engenharia de Agrimensura"
+    },
+    {
+      "id": 498,
+      "nome": "Engenharia de Automação"
+    },
+    {
+      "id": 266,
+      "nome": "Engenharia de Pesca"
+    },
+    {
+      "id": 341,
+      "nome": "Engenharia de Petróleo"
+    },
+    {
+      "id": 274,
+      "nome": "Engenharia de Produção"
+    },
+    {
+      "id": 499,
+      "nome": "Engenharia de Qualidade"
+    },
+    {
+      "id": 100,
+      "nome": "Engenharia de Software"
+    },
+    {
+      "id": 184,
+      "nome": "Engenharia de Telecomunicações"
+    },
+    {
+      "id": 343,
+      "nome": "Engenharia de Transportes e Trânsito"
+    },
+    {
+      "id": 180,
+      "nome": "Engenharia Elétrica"
+    },
+    {
+      "id": 275,
+      "nome": "Engenharia Eletrônica"
+    },
+    {
+      "id": 258,
+      "nome": "Engenharia Florestal"
+    },
+    {
+      "id": 344,
+      "nome": "Engenharia Hidráulica"
+    },
+    {
+      "id": 181,
+      "nome": "Engenharia Mecânica"
+    },
+    {
+      "id": 346,
+      "nome": "Engenharia Mecatrônica"
+    },
+    {
+      "id": 269,
+      "nome": "Engenharia Naval"
+    },
+    {
+      "id": 260,
+      "nome": "Engenharia Química e Química Industrial"
+    },
+    {
+      "id": 350,
+      "nome": "Enologia"
+    },
+    {
+      "id": 17,
+      "nome": "Espanhol"
+    },
+    {
+      "id": 40,
+      "nome": "Estatística"
+    },
+    {
+      "id": 500,
+      "nome": "Estatuto da Advocacia e da OAB, Regulamento Geral e Código de Ética e Disciplina da OAB"
+    },
+    {
+      "id": 579,
+      "nome": "Estatuto da Pessoa com Deficiência - Lei nº 13.146 de 2015"
+    },
+    {
+      "id": 534,
+      "nome": "Estatuto da Pessoa Idosa - Lei nº 10.741 de 2003"
+    },
+    {
+      "id": 25,
+      "nome": "Ética na Administração Pública"
+    },
+    {
+      "id": 262,
+      "nome": "Farmácia"
+    },
+    {
+      "id": 546,
+      "nome": "Filosofia"
+    },
+    {
+      "id": 216,
+      "nome": "Filosofia do Direito"
+    },
+    {
+      "id": 198,
+      "nome": "Física"
+    },
+    {
+      "id": 185,
+      "nome": "Fisioterapia"
+    },
+    {
+      "id": 263,
+      "nome": "Fonoaudiologia"
+    },
+    {
+      "id": 354,
+      "nome": "Francês"
+    },
+    {
+      "id": 356,
+      "nome": "Gastronomia"
+    },
+    {
+      "id": 73,
+      "nome": "Geografia"
+    },
+    {
+      "id": 358,
+      "nome": "Geologia"
+    },
+    {
+      "id": 118,
+      "nome": "Gerência de Projetos"
+    },
+    {
+      "id": 112,
+      "nome": "Gestão de Pessoas"
+    },
+    {
+      "id": 592,
+      "nome": "Gestão de Saúde e Administração Hospitalar"
+    },
+    {
+      "id": 99,
+      "nome": "Governança de TI"
+    },
+    {
+      "id": 366,
+      "nome": "Hemoterapia"
+    },
+    {
+      "id": 367,
+      "nome": "Hidrologia"
+    },
+    {
+      "id": 550,
+      "nome": "História"
+    },
+    {
+      "id": 521,
+      "nome": "História e Geografia de Estados e Municípios"
+    },
+    {
+      "id": 16,
+      "nome": "Inglês"
+    },
+    {
+      "id": 370,
+      "nome": "Instrumentação Industrial"
+    },
+    {
+      "id": 586,
+      "nome": "Italiano"
+    },
+    {
+      "id": 206,
+      "nome": "Jornalismo"
+    },
+    {
+      "id": 250,
+      "nome": "Legislação da AGU"
+    },
+    {
+      "id": 246,
+      "nome": "Legislação da Defensoria Pública"
+    },
+    {
+      "id": 556,
+      "nome": "Legislação da Justiça Militar"
+    },
+    {
+      "id": 559,
+      "nome": "Legislação da PRF"
+    },
+    {
+      "id": 583,
+      "nome": "Legislação das Procuradorias Gerais dos Estados - PGE's"
+    },
+    {
+      "id": 222,
+      "nome": "Legislação de Seguros"
+    },
+    {
+      "id": 200,
+      "nome": "Legislação de Trânsito"
+    },
+    {
+      "id": 276,
+      "nome": "Legislação do Ministério Público"
+    },
+    {
+      "id": 604,
+      "nome": "Legislação dos Municípios do Estado da Bahia"
+    },
+    {
+      "id": 607,
+      "nome": "Legislação dos Municípios do Estado da Paraíba"
+    },
+    {
+      "id": 619,
+      "nome": "Legislação dos Municípios do Estado de Alagoas"
+    },
+    {
+      "id": 601,
+      "nome": "Legislação dos Municípios do Estado de Goiás"
+    },
+    {
+      "id": 597,
+      "nome": "Legislação dos Municípios do Estado de Minas Gerais"
+    },
+    {
+      "id": 608,
+      "nome": "Legislação dos Municípios do Estado de Pernambuco"
+    },
+    {
+      "id": 616,
+      "nome": "Legislação dos Municípios do Estado de Rondônia"
+    },
+    {
+      "id": 611,
+      "nome": "Legislação dos Municípios do Estado de Roraima"
+    },
+    {
+      "id": 600,
+      "nome": "Legislação dos Municípios do Estado de Santa Catarina"
+    },
+    {
+      "id": 596,
+      "nome": "Legislação dos Municípios do Estado de São Paulo"
+    },
+    {
+      "id": 612,
+      "nome": "Legislação dos Municípios do Estado de Sergipe"
+    },
+    {
+      "id": 613,
+      "nome": "Legislação dos Municípios do Estado de Tocantins"
+    },
+    {
+      "id": 620,
+      "nome": "Legislação dos Municípios do Estado do Acre "
+    },
+    {
+      "id": 615,
+      "nome": "Legislação dos Municípios do Estado do Amapá"
+    },
+    {
+      "id": 614,
+      "nome": "Legislação dos Municípios do Estado do Amazonas"
+    },
+    {
+      "id": 605,
+      "nome": "Legislação dos Municípios do Estado do Ceará"
+    },
+    {
+      "id": 617,
+      "nome": "Legislação dos Municípios do Estado do Espírito Santo"
+    },
+    {
+      "id": 618,
+      "nome": "Legislação dos Municípios do Estado do Maranhão"
+    },
+    {
+      "id": 602,
+      "nome": "Legislação dos Municípios do Estado do Mato Grosso"
+    },
+    {
+      "id": 603,
+      "nome": "Legislação dos Municípios do Estado do Mato Grosso do Sul"
+    },
+    {
+      "id": 606,
+      "nome": "Legislação dos Municípios do Estado do Pará"
+    },
+    {
+      "id": 598,
+      "nome": "Legislação dos Municípios do Estado do Paraná"
+    },
+    {
+      "id": 609,
+      "nome": "Legislação dos Municípios do Estado do Piauí"
+    },
+    {
+      "id": 595,
+      "nome": "Legislação dos Municípios do Estado do Rio de Janeiro"
+    },
+    {
+      "id": 610,
+      "nome": "Legislação dos Municípios do Estado do Rio Grande do Norte"
+    },
+    {
+      "id": 599,
+      "nome": "Legislação dos Municípios do Estado do Rio Grande do Sul"
+    },
+    {
+      "id": 558,
+      "nome": "Legislação dos TRFs, STJ, STF e CNJ"
+    },
+    {
+      "id": 581,
+      "nome": "Legislação dos Tribunais de Contas (TCU, TCEs e TCMs) e Ministérios Públicos de Contas"
+    },
+    {
+      "id": 43,
+      "nome": "Legislação dos Tribunais de Justiça (TJs)"
+    },
+    {
+      "id": 557,
+      "nome": "Legislação dos Tribunais do Trabalho (TST e TRTs)"
+    },
+    {
+      "id": 580,
+      "nome": "Legislação dos Tribunais Eleitorais (TSE e TREs)"
+    },
+    {
+      "id": 61,
+      "nome": "Legislação Estadual"
+    },
+    {
+      "id": 53,
+      "nome": "Legislação Federal"
+    },
+    {
+      "id": 179,
+      "nome": "Legislação Municipal"
+    },
+    {
+      "id": 371,
+      "nome": "Libras"
+    },
+    {
+      "id": 591,
+      "nome": "Linguística "
+    },
+    {
+      "id": 408,
+      "nome": "Literatura"
+    },
+    {
+      "id": 409,
+      "nome": "Logística"
+    },
+    {
+      "id": 622,
+      "nome": "Mandarim"
+    },
+    {
+      "id": 229,
+      "nome": "Marketing"
+    },
+    {
+      "id": 13,
+      "nome": "Matemática"
+    },
+    {
+      "id": 226,
+      "nome": "Matemática Atuarial"
+    },
+    {
+      "id": 39,
+      "nome": "Matemática Financeira"
+    },
+    {
+      "id": 413,
+      "nome": "Mecânica"
+    },
+    {
+      "id": 414,
+      "nome": "Mecânica de Autos"
+    },
+    {
+      "id": 416,
+      "nome": "Mecatrônica"
+    },
+    {
+      "id": 177,
+      "nome": "Medicina"
+    },
+    {
+      "id": 104,
+      "nome": "Medicina Legal"
+    },
+    {
+      "id": 417,
+      "nome": "Meio Ambiente"
+    },
+    {
+      "id": 419,
+      "nome": "Meteorologia"
+    },
+    {
+      "id": 524,
+      "nome": "Metodologia da Investigação Policial"
+    },
+    {
+      "id": 420,
+      "nome": "Metrologia"
+    },
+    {
+      "id": 573,
+      "nome": "Mineração"
+    },
+    {
+      "id": 489,
+      "nome": "Modelagem de Processos de Negócio (BPM)"
+    },
+    {
+      "id": 422,
+      "nome": "Museologia"
+    },
+    {
+      "id": 423,
+      "nome": "Música"
+    },
+    {
+      "id": 52,
+      "nome": "Não definido"
+    },
+    {
+      "id": 46,
+      "nome": "Noções de Informática"
+    },
+    {
+      "id": 199,
+      "nome": "Noções de Primeiros Socorros"
+    },
+    {
+      "id": 186,
+      "nome": "Nutrição"
+    },
+    {
+      "id": 205,
+      "nome": "Oceanografia Geológica"
+    },
+    {
+      "id": 176,
+      "nome": "Odontologia"
+    },
+    {
+      "id": 427,
+      "nome": "Órtese e Prótese"
+    },
+    {
+      "id": 148,
+      "nome": "Patologia"
+    },
+    {
+      "id": 182,
+      "nome": "Pedagogia"
+    },
+    {
+      "id": 1,
+      "nome": "Português"
+    },
+    {
+      "id": 160,
+      "nome": "Programação"
+    },
+    {
+      "id": 178,
+      "nome": "Psicologia"
+    },
+    {
+      "id": 189,
+      "nome": "Psiquiatria"
+    },
+    {
+      "id": 594,
+      "nome": "Publicidade e Propaganda"
+    },
+    {
+      "id": 208,
+      "nome": "Química"
+    },
+    {
+      "id": 4,
+      "nome": "Raciocínio Lógico"
+    },
+    {
+      "id": 437,
+      "nome": "Radiologia"
+    },
+    {
+      "id": 174,
+      "nome": "Redação Oficial"
+    },
+    {
+      "id": 95,
+      "nome": "Redes de Computadores"
+    },
+    {
+      "id": 92,
+      "nome": "Regimento Interno"
+    },
+    {
+      "id": 51,
+      "nome": "Relações Humanas"
+    },
+    {
+      "id": 585,
+      "nome": "Relações Internacionais"
+    },
+    {
+      "id": 265,
+      "nome": "Relações Públicas"
+    },
+    {
+      "id": 575,
+      "nome": "Saúde Pública"
+    },
+    {
+      "id": 440,
+      "nome": "Secretariado"
+    },
+    {
+      "id": 388,
+      "nome": "Segurança"
+    },
+    {
+      "id": 97,
+      "nome": "Segurança da Informação"
+    },
+    {
+      "id": 28,
+      "nome": "Segurança e Saúde no Trabalho"
+    },
+    {
+      "id": 207,
+      "nome": "Segurança e Transporte"
+    },
+    {
+      "id": 532,
+      "nome": "Segurança Pública"
+    },
+    {
+      "id": 188,
+      "nome": "Serviço Social"
+    },
+    {
+      "id": 442,
+      "nome": "Sistemas de Gás"
+    },
+    {
+      "id": 238,
+      "nome": "Sistemas de Informação"
+    },
+    {
+      "id": 94,
+      "nome": "Sistemas Operacionais"
+    },
+    {
+      "id": 252,
+      "nome": "Sociologia"
+    },
+    {
+      "id": 590,
+      "nome": "Taquigrafia"
+    },
+    {
+      "id": 447,
+      "nome": "Técnicas Administrativas"
+    },
+    {
+      "id": 465,
+      "nome": "Técnicas em Laboratório"
+    },
+    {
+      "id": 471,
+      "nome": "Técnicas em Topografia"
+    },
+    {
+      "id": 475,
+      "nome": "Tecnologia Educacional"
+    },
+    {
+      "id": 47,
+      "nome": "Telecomunicações"
+    },
+    {
+      "id": 483,
+      "nome": "Teologia"
+    },
+    {
+      "id": 183,
+      "nome": "Terapia Ocupacional"
+    },
+    {
+      "id": 588,
+      "nome": "Tratados Internacionais"
+    },
+    {
+      "id": 484,
+      "nome": "Turismo"
+    },
+    {
+      "id": 485,
+      "nome": "Vestuário, Moda e Estilismo"
+    },
+    {
+      "id": 239,
+      "nome": "Veterinária"
+    },
+    {
+      "id": 576,
+      "nome": "Zoologia"
+    },
+    {
+      "id": 487,
+      "nome": "Zootecnia"
+    }
+  ]
+}

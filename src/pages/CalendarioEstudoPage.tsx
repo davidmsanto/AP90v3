@@ -313,25 +313,25 @@ export const CalendarioEstudoPage: React.FC<CalendarioEstudoPageProps> = ({
                     onClick={() => {
                       if (itensDia.length > 0) setDiaSelecionado(dataISO);
                     }}
-                    className={`min-h-[110px] p-2 rounded-lg border transition-all flex flex-col justify-between ${
+                    className={`min-h-[110px] p-2 rounded-2xl border transition-all flex flex-col justify-between ${
                       isOutroMes
-                        ? 'opacity-30 bg-surface/40 border-surface-border/40'
+                        ? 'opacity-25 bg-black/20 border-white/5'
                         : isHoje
-                        ? 'bg-surface-elevated/70 border-accent-success shadow-sm'
-                        : 'bg-surface-card border-surface-border hover:border-surface-border-elevated'
-                    } ${itensDia.length > 0 ? 'cursor-pointer' : ''}`}
+                        ? 'bg-[#00e676]/5 border-[#00e676]/50 shadow-[0_0_15px_rgba(0,230,118,0.15)]'
+                        : 'glass-card border-white/5 hover:border-white/20'
+                    } ${itensDia.length > 0 ? 'cursor-pointer hover:scale-[1.01]' : ''}`}
                   >
                     {/* Topo do dia: Número e Horas Disponíveis */}
                     <div className="flex items-center justify-between mb-1">
                       <span
                         className={`text-caption font-mono font-bold inline-flex items-center justify-center w-6 h-6 rounded-full ${
-                          isHoje ? 'bg-accent-success text-surface font-black' : 'text-text-primary'
+                          isHoje ? 'bg-gradient-to-b from-[#00f584] to-[#00b355] text-[#031d10] font-black shadow-[0_0_8px_#00e676]' : 'text-text-primary'
                         }`}
                       >
                         {diaNumero}
                       </span>
 
-                      <span className="text-[10px] font-mono text-text-secondary/70">
+                      <span className="text-[10px] font-mono text-text-muted">
                         {horasDia > 0 ? `${horasDia}h` : 'Folga'}
                       </span>
                     </div>
@@ -346,10 +346,10 @@ export const CalendarioEstudoPage: React.FC<CalendarioEstudoPageProps> = ({
                         return (
                           <div
                             key={item.id}
-                            className={`p-1 rounded text-[11px] leading-tight border transition-colors flex items-center justify-between gap-1 ${
+                            className={`p-1.5 rounded-lg text-[11px] leading-tight border transition-colors flex items-center justify-between gap-1 ${
                               isConcluido
-                                ? 'bg-accent-success/10 border-accent-success/20 text-accent-success line-through'
-                                : 'bg-surface border-surface-border text-text-primary'
+                                ? 'bg-[#00e676]/10 border-[#00e676]/30 text-[#00e676] line-through'
+                                : 'glass-pill text-text-primary border-white/5'
                             }`}
                             title={`${discNome || ''}: ${t?.nome || ''} (Peso ${t?.peso || 1})`}
                           >

@@ -16,6 +16,7 @@ import {
   distribuirTopicosNoCalendario, 
   executarRolloverAtrasados 
 } from '../services/calendarScheduler';
+import { isDisciplineHeaderTopic } from '../services/extractEdital';
 
 export interface AppState {
   editais: Edital[];
@@ -43,6 +44,7 @@ export interface AppState {
   ) => void;
   alternarConclusaoTopico: (topicoId: string) => void;
   removerEdital: (id?: string) => void;
+  removerTopicosFantasmas: () => void;
 
   // Caderno de Erros
   adicionarErro: (erro: Omit<ErroRegistrado, 'id' | 'userId'>) => void;
@@ -176,6 +178,23 @@ export const useAppStore = create<AppState>()(
           cronograma: [],
         }),
 
+      removerTopicosFantasmas: () =>
+        set((state) => {
+          const discMap = new Map<string, string>();
+          state.editais.forEach((e) => {
+            (e.disciplinas || []).forEach((d) => discMap.set(d.id, d.nome));
+          });
+          const topicosLimpos = state.topicos.filter((t) => {
+            const discNome = discMap.get(t.disciplinaId) || '';
+            return !isDisciplineHeaderTopic(t.nome, discNome);
+          });
+          const idsValidos = new Set(topicosLimpos.map((t) => t.id));
+          return {
+            topicos: topicosLimpos,
+            cronograma: state.cronograma.filter((c) => idsValidos.has(c.topicoId)),
+          };
+        }),
+
       adicionarErro: (dadosErro) =>
         set((state) => ({
           errosRegistrados: [
@@ -305,6 +324,45 @@ export const useAppStore = create<AppState>()(
     {
       name: 'ap90-storage',
       storage: createJSONStorage(() => localStorage),
+      merge: (persistedState: unknown, currentState: AppState): AppState => {
+        const p = (persistedState as Partial<AppState>) || {};
+        const editais = Array.isArray(p.editais) ? p.editais : currentState.editais;
+        const rawTopicos = Array.isArray(p.topicos) ? p.topicos : currentState.topicos;
+
+        // Limpa tópicos fantasmas que repetem o cabeçalho da disciplina
+        const discMap = new Map<string, string>();
+        editais.forEach((e) => {
+          (e.disciplinas || []).forEach((d) => discMap.set(d.id, d.nome));
+        });
+        const topicosLimpos = rawTopicos.filter((t) => {
+          const discNome = discMap.get(t.disciplinaId) || '';
+          return !isDisciplineHeaderTopic(t.nome, discNome);
+        });
+        const idsValidos = new Set(topicosLimpos.map((t) => t.id));
+
+        const rawCronograma = Array.isArray(p.cronograma) ? p.cronograma : currentState.cronograma;
+        const cronogramaLimpo = rawCronograma.filter((c) => idsValidos.has(c.topicoId));
+
+        return {
+          ...currentState,
+          ...p,
+          editais,
+          topicos: topicosLimpos,
+          registrosQuestoes: Array.isArray(p.registrosQuestoes) ? p.registrosQuestoes : currentState.registrosQuestoes,
+          errosRegistrados: Array.isArray(p.errosRegistrados) ? p.errosRegistrados : currentState.errosRegistrados,
+          revisoes: Array.isArray(p.revisoes) ? p.revisoes : currentState.revisoes,
+          taxonomiaRecorte: Array.isArray(p.taxonomiaRecorte) ? p.taxonomiaRecorte : currentState.taxonomiaRecorte,
+          cronograma: cronogramaLimpo,
+          ritmoConfig: {
+            ...DEFAULT_RITMO_CONFIG,
+            ...(p.ritmoConfig || {}),
+            disponibilidade: {
+              ...DEFAULT_RITMO_CONFIG.disponibilidade,
+              ...(p.ritmoConfig?.disponibilidade || {}),
+            },
+          },
+        };
+      },
     }
   )
 );

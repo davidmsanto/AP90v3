@@ -14,7 +14,9 @@ import {
   Briefcase,
   FileText,
   ExternalLink,
-  Search
+  Search,
+  X,
+  CheckCircle2
 } from 'lucide-react';
 import { useAppStore } from '../store/useAppStore';
 import { 
@@ -27,9 +29,9 @@ import {
   QConcursosFiltro 
 } from '../types';
 import { Card, Button, Badge, MetricCard } from '../components/ui';
-import { extractEditalWithAI } from '../services/extractEdital';
+import { extractEditalWithAI, parseEditalLocalFallback } from '../services/extractEdital';
 import { mapEditalToQconcursos, buildQConcursosUrl } from '../services/mapEditalToQconcursos';
-import { getAISettings, saveAISettings, AIProvider } from '../services/aiClient';
+import { getAISettings, saveAISettings, clearAISettings, testAIConnection, AIProvider } from '../services/aiClient';
 import { ModalQConcursosSelector } from '../components/ModalQConcursosSelector';
 
 interface ImportarEditalProps {
@@ -247,6 +249,9 @@ export const ImportarEdital: React.FC<ImportarEditalProps> = ({ onSuccess }) => 
   const [showConfigAI, setShowConfigAI] = useState(false);
   const [aiProvider, setAiProvider] = useState<AIProvider>(getAISettings().provider);
   const [aiKey, setAiKey] = useState(getAISettings().apiKey);
+  const [aiModel, setAiModel] = useState<string>(getAISettings().model || 'gemini-2.0-flash');
+  const [isTestingAI, setIsTestingAI] = useState(false);
+  const [testResult, setTestResult] = useState<{ success: boolean; message: string } | null>(null);
 
   // Modal Seletor de Assunto QC
   const [modalTopic, setModalTopic] = useState<{
@@ -255,8 +260,35 @@ export const ImportarEdital: React.FC<ImportarEditalProps> = ({ onSuccess }) => 
   } | null>(null);
 
   const handleSaveAISettings = () => {
-    saveAISettings(aiProvider, aiKey);
+    saveAISettings(aiProvider, aiKey, aiModel);
     setShowConfigAI(false);
+    alert('Configurações de IA salvas com sucesso!');
+  };
+
+  const handleTestAI = async () => {
+    if (!aiKey.trim()) {
+      setTestResult({ success: false, message: 'Insira uma chave de API antes de testar.' });
+      return;
+    }
+    setIsTestingAI(true);
+    setTestResult(null);
+    try {
+      saveAISettings(aiProvider, aiKey, aiModel);
+      const res = await testAIConnection();
+      setTestResult(res);
+    } catch (err: any) {
+      setTestResult({ success: false, message: err?.message || String(err) });
+    } finally {
+      setIsTestingAI(false);
+    }
+  };
+
+  const handleClearAI = () => {
+    clearAISettings();
+    setAiKey('');
+    setTestResult(null);
+    setShowConfigAI(false);
+    alert('Chave removida com sucesso! O AP90 utilizará o algoritmo inteligente local (100% gratuito e offline).');
   };
 
   const handleCarregarExemplo = () => {
@@ -281,22 +313,30 @@ export const ImportarEdital: React.FC<ImportarEditalProps> = ({ onSuccess }) => 
       setEtapaAtual('A');
       setMensagemProgresso('Etapa A: Estruturando disciplinas e tópicos hierárquicos...');
       const extractResult = await extractEditalWithAI(conteudoBruto);
-      const disciplinas = extractResult.disciplinas;
+      let disciplinas = extractResult.disciplinas;
       setUsouIA(extractResult.usedAI);
       if (extractResult.warning) {
         setAvisoIA(extractResult.warning);
       }
 
       if (!disciplinas || disciplinas.length === 0) {
-        throw new Error('Nenhuma disciplina ou tópico foi identificado no texto fornecido.');
+        disciplinas = parseEditalLocalFallback(conteudoBruto);
       }
 
-      // ETAPA B: Mapeamento pro QConcursos (Leis + Keywords + IA residual + Recorte)
+      if (!disciplinas || disciplinas.length === 0) {
+        throw new Error('Não foi possível identificar conteúdo no texto informado. Por favor, verifique o texto colado.');
+      }
+
+      // ETAPA B: Mapeamento pro QConcursos (Leis + Keywords + Grounding IA + Recorte)
       setEtapaAtual('B');
       setMensagemProgresso('Etapa B: Mapeando tópicos para a taxonomia do QConcursos...');
-      const mapped = await mapEditalToQconcursos(disciplinas, (msg) => {
-        setMensagemProgresso(`Etapa B: ${msg}`);
-      });
+      const mapped = await mapEditalToQconcursos(
+        disciplinas, 
+        (msg) => {
+          setMensagemProgresso(`Etapa B: ${msg}`);
+        },
+        banca
+      );
 
       setDisciplinasExtraidas(mapped.disciplinas);
       setTaxonomiaRecorte(mapped.taxonomiaRecorte);
@@ -469,14 +509,28 @@ export const ImportarEdital: React.FC<ImportarEditalProps> = ({ onSuccess }) => 
   if (fase === 'revisao') {
     return (
       <div className="max-w-5xl mx-auto space-y-6">
-        {/* Aviso explícito de Fallback de IA caso tenha ocorrido erro */}
+        {/* Aviso explícito de Fallback de IA caso tenha ocorrido sobrecarga */}
         {avisoIA && (
-          <div className="p-4 rounded-card bg-accent-warning/10 border border-accent-warning/30 text-caption text-accent-warning flex items-start gap-3">
-            <AlertTriangle className="w-4 h-4 flex-shrink-0 mt-0.5" />
-            <div>
-              <strong className="font-semibold block mb-0.5">Aviso de Contingência:</strong>
-              <span>{avisoIA}</span>
+          <div className="p-4 rounded-card bg-amber-500/10 border border-amber-500/30 text-caption text-amber-400 flex items-start justify-between gap-3">
+            <div className="flex items-start gap-3">
+              <AlertTriangle className="w-5 h-5 flex-shrink-0 text-amber-400 mt-0.5" />
+              <div>
+                <strong className="font-semibold block mb-0.5 text-text-primary">
+                  Estruturação Concluída com Algoritmo Local
+                </strong>
+                <span className="text-text-secondary">{avisoIA}</span>
+                <p className="mt-1 text-xs text-text-muted">
+                  Todas as disciplinas e tópicos foram identificados e mapeados. Você pode revisar pesos, adicionar tópicos ou confirmar o edital abaixo.
+                </p>
+              </div>
             </div>
+            <button
+              onClick={() => setAvisoIA(null)}
+              className="text-text-secondary hover:text-text-primary p-1 rounded hover:bg-surface-border transition-colors"
+              title="Fechar aviso"
+            >
+              <X className="w-4 h-4" />
+            </button>
           </div>
         )}
 
@@ -487,10 +541,8 @@ export const ImportarEdital: React.FC<ImportarEditalProps> = ({ onSuccess }) => 
               <Badge variant="success">ESTRUTURAÇÃO CONCLUÍDA</Badge>
               {usouIA ? (
                 <Badge variant="success">Processado via IA ({aiProvider.toUpperCase()})</Badge>
-              ) : avisoIA ? (
-                <Badge variant="critical">Fallback Heurístico Local</Badge>
               ) : (
-                <Badge variant="neutral">Parser Heurístico Local (Sem IA)</Badge>
+                <Badge variant="neutral">Estruturado via Algoritmo Local</Badge>
               )}
               <span className="text-caption font-mono text-text-secondary">{banca}</span>
             </div>
@@ -760,13 +812,27 @@ export const ImportarEdital: React.FC<ImportarEditalProps> = ({ onSuccess }) => 
 
         {/* Painel Expansível de Chave de IA */}
         {showConfigAI && (
-          <div className="mt-6 pt-5 border-t border-surface-border-elevated bg-surface p-4 rounded-lg space-y-3">
-            <div className="flex items-center justify-between">
-              <h3 className="text-h2 text-text-primary">Chave de API de IA (Opcional)</h3>
-              <span className="text-caption text-text-secondary">
-                Salva exclusivamente no seu navegador (localStorage)
-              </span>
+          <div className="mt-6 pt-5 border-t border-surface-border-elevated bg-surface p-4 rounded-lg space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <h3 className="text-h2 text-text-primary">Configurar Conexão com IA</h3>
+                <p className="text-caption text-text-secondary">
+                  Salva com segurança apenas no seu navegador (localStorage).
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={handleClearAI}
+                  className="text-accent-critical hover:text-accent-critical border-accent-critical/30 hover:border-accent-critical"
+                  icon={<Trash2 className="w-3.5 h-3.5" />}
+                >
+                  Limpar Chave (Modo Local)
+                </Button>
+              </div>
             </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div>
                 <label className="block text-caption font-mono text-text-secondary mb-1">
@@ -777,12 +843,29 @@ export const ImportarEdital: React.FC<ImportarEditalProps> = ({ onSuccess }) => 
                   onChange={e => setAiProvider(e.target.value as AIProvider)}
                   className="w-full bg-surface-card border border-surface-border rounded-lg p-2 text-body text-text-primary focus:border-accent-success focus:outline-none"
                 >
-                  <option value="gemini">Google Gemini (Recomendado)</option>
-                  <option value="openai">OpenAI (GPT-4o)</option>
+                  <option value="gemini">Google Gemini</option>
+                  <option value="openai">OpenAI (ChatGPT)</option>
                 </select>
               </div>
 
-              <div className="sm:col-span-2">
+              <div>
+                <label className="block text-caption font-mono text-text-secondary mb-1">
+                  Modelo Selecionado
+                </label>
+                <select
+                  value={aiModel}
+                  onChange={e => setAiModel(e.target.value)}
+                  className="w-full bg-surface-card border border-surface-border rounded-lg p-2 text-body text-text-primary focus:border-accent-success focus:outline-none"
+                >
+                  <option value="gemini-2.0-flash">Gemini 2.0 Flash (Padrão)</option>
+                  <option value="gemini-1.5-flash-8b">Gemini 1.5 Flash 8B (Menor sobrecarga / Mais estável)</option>
+                  <option value="gemini-2.0-flash-lite-preview-02-05">Gemini 2.0 Flash Lite</option>
+                  <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
+                  <option value="gemini-1.5-pro">Gemini 1.5 Pro</option>
+                </select>
+              </div>
+
+              <div>
                 <label className="block text-caption font-mono text-text-secondary mb-1">
                   API Key
                 </label>
@@ -791,7 +874,7 @@ export const ImportarEdital: React.FC<ImportarEditalProps> = ({ onSuccess }) => 
                     type="password"
                     value={aiKey}
                     onChange={e => setAiKey(e.target.value)}
-                    placeholder="Cole sua chave aqui (ou deixe vazio para parser heurístico)..."
+                    placeholder="Cole sua chave aqui..."
                     className="flex-1 bg-surface-card border border-surface-border rounded-lg px-3 py-2 text-body text-text-primary focus:border-accent-success focus:outline-none font-mono text-caption"
                   />
                   <Button variant="primary" size="sm" onClick={handleSaveAISettings}>
@@ -800,6 +883,44 @@ export const ImportarEdital: React.FC<ImportarEditalProps> = ({ onSuccess }) => 
                 </div>
               </div>
             </div>
+
+            <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-surface-border">
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  disabled={isTestingAI || !aiKey.trim()}
+                  onClick={handleTestAI}
+                  icon={isTestingAI ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Sparkles className="w-3.5 h-3.5" />}
+                >
+                  {isTestingAI ? 'Testando conexão...' : 'Testar Conexão com IA'}
+                </Button>
+              </div>
+
+              <div className="text-caption text-text-muted">
+                💡 <span className="text-text-secondary">Dica:</span> Se a API do Google estiver instável (503), o AP90 estrutura o edital automaticamente via algoritmo local sem falhas.
+              </div>
+            </div>
+
+            {testResult && (
+              <div
+                className={`p-3 rounded-lg text-caption flex items-start gap-2 ${
+                  testResult.success
+                    ? 'bg-accent-success/10 border border-accent-success/30 text-accent-success'
+                    : 'bg-amber-500/10 border border-amber-500/30 text-amber-400'
+                }`}
+              >
+                {testResult.success ? (
+                  <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                ) : (
+                  <AlertTriangle className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                )}
+                <div>
+                  <strong>{testResult.success ? 'Conexão Bem-Sucedida:' : 'Aviso de Conexão:'}</strong>{' '}
+                  {testResult.message}
+                </div>
+              </div>
+            )}
           </div>
         )}
       </Card>

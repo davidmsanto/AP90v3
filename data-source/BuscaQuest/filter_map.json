@@ -1,0 +1,117 @@
+{
+  "discipline_inputs": [
+    {
+      "tag": "DIV",
+      "type": null,
+      "name": null,
+      "value": null,
+      "id": "",
+      "dataId": "182",
+      "text": "1\n\n    \n      Q4280720    \n  \n  \n        \n      Pe"
+    },
+    {
+      "tag": "DIV",
+      "type": null,
+      "name": null,
+      "value": null,
+      "id": "",
+      "dataId": "182",
+      "text": "2\n\n    \n      Q4280719    \n  \n  \n        \n      Pe"
+    },
+    {
+      "tag": "DIV",
+      "type": null,
+      "name": null,
+      "value": null,
+      "id": "",
+      "dataId": "182",
+      "text": "3\n\n    \n      Q4280718    \n  \n  \n        \n      Pe"
+    },
+    {
+      "tag": "DIV",
+      "type": null,
+      "name": null,
+      "value": null,
+      "id": "",
+      "dataId": "182",
+      "text": "4\n\n    \n      Q4280717    \n  \n  \n        \n      Pe"
+    },
+    {
+      "tag": "DIV",
+      "type": null,
+      "name": null,
+      "value": null,
+      "id": "",
+      "dataId": "40",
+      "text": "5\n\n    \n      Q4280715    \n  \n  \n        \n      Es"
+    },
+    {
+      "tag": "DIV",
+      "type": null,
+      "name": null,
+      "value": null,
+      "id": "",
+      "dataId": "182",
+      "text": "6\n\n    \n      Q4280713    \n  \n  \n        \n      Pe"
+    },
+    {
+      "tag": "DIV",
+      "type": null,
+      "name": null,
+      "value": null,
+      "id": "",
+      "dataId": "182",
+      "text": "7\n\n    \n      Q4280712    \n  \n  \n        \n      Pe"
+    },
+    {
+      "tag": "DIV",
+      "type": null,
+      "name": null,
+      "value": null,
+      "id": "",
+      "dataId": "182",
+      "text": "8\n\n    \n      Q4280711    \n  \n  \n        \n      Pe"
+    },
+    {
+      "tag": "DIV",
+      "type": null,
+      "name": null,
+      "value": null,
+      "id": "",
+      "dataId": "182",
+      "text": "9\n\n    \n      Q4280710    \n  \n  \n          \n      "
+    },
+    {
+      "tag": "DIV",
+      "type": null,
+      "name": null,
+      "value": null,
+      "id": "",
+      "dataId": "326",
+      "text": "10\n\n    \n      Q4280709    \n  \n  \n        \n      E"
+    }
+  ],
+  "subject_inputs": [],
+  "filter_buttons": [
+    {
+      "text": "Meus Filtros",
+      "class": "js-always-display btn btn-default q-btn-saved-filters btn-bl",
+      "aria-label": null
+    },
+    {
+      "text": "Disciplina",
+      "class": "dropdown-toggle form-control ",
+      "aria-label": null
+    },
+    {
+      "text": "Assunto",
+      "class": "dropdown-toggle form-control ",
+      "aria-label": null
+    },
+    {
+      "text": "Salvar Filtros",
+      "class": "js-btn-save btn btn-link q-btn-save",
+      "aria-label": null
+    }
+  ]
+}

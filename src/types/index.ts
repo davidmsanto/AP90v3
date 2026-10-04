@@ -9,6 +9,8 @@ export interface Disciplina {
 export interface QConcursosFiltro {
   disciplinaId: string;
   assuntoId?: string;
+  assuntoIds?: string[]; // Suporte a múltiplos assuntos no mesmo tópico
+  bancaId?: string;      // ID da banca organizadora no QConcursos
   disciplinaNome?: string;
   assuntoNome?: string;
 }

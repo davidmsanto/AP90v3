@@ -23,13 +23,7 @@ function dataSourceStaticPlugin(): Plugin {
       const srcDir = path.join(process.cwd(), 'data-source')
       const outDir = path.join(process.cwd(), 'dist', 'data-source')
       if (fs.existsSync(srcDir)) {
-        if (!fs.existsSync(outDir)) {
-          fs.mkdirSync(outDir, { recursive: true })
-        }
-        const files = fs.readdirSync(srcDir)
-        for (const file of files) {
-          fs.copyFileSync(path.join(srcDir, file), path.join(outDir, file))
-        }
+        fs.cpSync(srcDir, outDir, { recursive: true })
       }
     }
   }
