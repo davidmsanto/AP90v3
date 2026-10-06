@@ -49,13 +49,13 @@ export const Home: React.FC<HomeProps> = ({ onNavigateToEdital, onNavigate }) =>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Main Hero Card (2 columns) */}
-        <div className="lg:col-span-2 relative rounded-3xl overflow-hidden glass-card-elevated border border-white/10 p-8 flex flex-col justify-between min-h-[380px] group">
+        <div className="lg:col-span-2 relative rounded-3xl overflow-hidden glass-card-elevated border border-white/10 p-5 sm:p-8 flex flex-col justify-between min-h-auto md:min-h-[380px] group">
           {/* Background Ambient Glows */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#00e676]/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
           <div className="absolute bottom-0 left-1/3 w-64 h-64 bg-emerald-600/5 rounded-full blur-2xl pointer-events-none" />
 
           {/* Header Tag */}
-          <div className="relative z-10 flex items-center justify-between">
+          <div className="relative z-10 flex flex-wrap items-center justify-between gap-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono font-semibold bg-[#00e676]/10 text-[#00e676] border border-[#00e676]/30 shadow-[0_0_12px_rgba(0,230,118,0.2)]">
               <Sparkles className="w-3 h-3 text-[#00e676]" />
               <span>SISTEMA DE ALTA PERFORMANCE</span>
@@ -64,16 +64,16 @@ export const Home: React.FC<HomeProps> = ({ onNavigateToEdital, onNavigate }) =>
           </div>
 
           {/* Hero Content & Visual Centerpiece */}
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-center my-6">
-            <div className="md:col-span-7 space-y-4">
-              <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.1]">
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-center my-4 sm:my-6">
+            <div className="md:col-span-7 space-y-3 sm:space-y-4">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.15]">
                 Planeje.<br />
                 Estude.<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00e676] to-emerald-300 drop-shadow-[0_0_20px_rgba(0,230,118,0.4)]">
                   Aprove.
                 </span>
               </h1>
-              <p className="text-sm text-text-secondary leading-relaxed max-w-md">
+              <p className="text-xs sm:text-sm text-text-secondary leading-relaxed max-w-md">
                 {editalAtivo 
                   ? `Painel de estudos ativo para ${editalAtivo.concurso} (${editalAtivo.cargo}). Cronograma e revisões calculados para máxima retenção.`
                   : 'A plataforma definitiva para concurseiros de alta performance. Importe seu edital, sincronize com o QConcursos e domine cada matéria.'}
@@ -82,13 +82,13 @@ export const Home: React.FC<HomeProps> = ({ onNavigateToEdital, onNavigate }) =>
 
             {/* Logo Centerpiece with Holographic Glow */}
             <div className="md:col-span-5 flex justify-center items-center">
-              <div className="relative w-48 h-48 flex items-center justify-center">
+              <div className="relative w-32 h-32 sm:w-44 sm:h-44 flex items-center justify-center">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#00e676]/25 to-transparent blur-xl opacity-70 animate-pulse" />
-                <div className="w-44 h-44 rounded-3xl glass-pill flex items-center justify-center p-4 border-white/10 shadow-[0_0_30px_rgba(0,230,118,0.15)] backdrop-blur-md">
+                <div className="w-28 h-28 sm:w-40 sm:h-40 rounded-3xl glass-pill flex items-center justify-center p-3 sm:p-4 border-white/10 shadow-[0_0_30px_rgba(0,230,118,0.15)] backdrop-blur-md">
                   <img 
                     src="/logo-ap90.png" 
                     alt="Logo AP90" 
-                    className="max-h-36 max-w-36 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]"
+                    className="max-h-24 sm:max-h-32 max-w-24 sm:max-w-32 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]"
                   />
                 </div>
               </div>
@@ -96,11 +96,11 @@ export const Home: React.FC<HomeProps> = ({ onNavigateToEdital, onNavigate }) =>
           </div>
 
           {/* Bottom Actions of Hero */}
-          <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/5">
-            <div className="flex items-center gap-3">
+          <div className="relative z-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 pt-4 border-t border-white/5">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
               <button
                 onClick={() => navigate(editalAtivo ? 'calendario' : 'edital')}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-b from-[#00f584] via-[#00e676] to-[#00b355] text-[#031d10] font-bold text-sm shadow-[0_0_24px_rgba(0,230,118,0.45)] hover:shadow-[0_0_35px_rgba(0,230,118,0.7)] hover:brightness-105 active:scale-95 transition-all border border-[#7affba]/60"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-b from-[#00f584] via-[#00e676] to-[#00b355] text-[#031d10] font-bold text-sm shadow-[0_0_24px_rgba(0,230,118,0.45)] hover:shadow-[0_0_35px_rgba(0,230,118,0.7)] hover:brightness-105 active:scale-95 transition-all border border-[#7affba]/60 w-full sm:w-auto"
               >
                 <Play className="w-4 h-4 fill-[#031d10]" />
                 <span>{editalAtivo ? 'Acessar Cronograma' : 'Configurar Edital'}</span>
@@ -108,7 +108,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigateToEdital, onNavigate }) =>
 
               <button
                 onClick={() => navigate('edital')}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full glass-pill text-text-primary hover:text-white hover:bg-white/[0.08] hover:border-white/20 text-sm font-medium transition-all"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full glass-pill text-text-primary hover:text-white hover:bg-white/[0.08] hover:border-white/20 text-sm font-medium transition-all w-full sm:w-auto"
               >
                 <BookOpen className="w-4 h-4 text-text-secondary" />
                 <span>Ver Matérias</span>
@@ -116,7 +116,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigateToEdital, onNavigate }) =>
             </div>
 
             {/* Status Pill */}
-            <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-mono text-text-secondary">
+            <div className="flex items-center justify-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-mono text-text-secondary self-center sm:self-auto">
               <Clock className="w-3.5 h-3.5 text-[#00e676]" />
               <span>{ritmoConfig?.tempoMedioMinutosPorTopico ?? 45} min / tópico</span>
             </div>

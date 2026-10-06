@@ -8,7 +8,8 @@ import {
   Activity, 
   User, 
   Clock, 
-  CalendarDays 
+  CalendarDays,
+  X
 } from 'lucide-react';
 import { DEFAULT_USER_ID } from '../types';
 import { Badge } from './ui';
@@ -18,6 +19,8 @@ export type NavigationPage = 'home' | 'edital' | 'erros' | 'questoes' | 'ritmo' 
 interface SidebarProps {
   currentPage: NavigationPage;
   onNavigate: (page: NavigationPage) => void;
+  isOpenMobile?: boolean;
+  onCloseMobile?: () => void;
 }
 
 interface MenuItem {
@@ -28,7 +31,12 @@ interface MenuItem {
   badge?: string;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ 
+  currentPage, 
+  onNavigate,
+  isOpenMobile = false,
+  onCloseMobile
+}) => {
   const menuItems: MenuItem[] = [
     { id: 'home', label: 'Visão Geral', icon: Activity, enabled: true },
     { id: 'edital', label: 'Editais & Matérias', icon: BookOpen, enabled: true },
@@ -39,22 +47,29 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate }) => 
     { id: 'erros', label: 'Caderno de Erros', icon: AlertTriangle, enabled: true },
   ];
 
-  return (
-    <aside className="w-64 h-screen bg-[#090d12]/90 backdrop-blur-2xl border-r border-white/10 flex flex-col flex-shrink-0 select-none z-20">
+  const handleItemClick = (id: NavigationPage) => {
+    onNavigate(id);
+    if (onCloseMobile) {
+      onCloseMobile();
+    }
+  };
+
+  const renderContent = (isMobile = false) => (
+    <>
       {/* Brand Header with Official Logo */}
-      <div className="p-5 border-b border-white/10">
+      <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="relative w-12 h-12 flex items-center justify-center rounded-2xl bg-white/[0.03] border border-white/10 shadow-[0_0_15px_rgba(0,230,118,0.15)] overflow-hidden flex-shrink-0">
+          <div className="relative w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center rounded-2xl bg-white/[0.03] border border-white/10 shadow-[0_0_15px_rgba(0,230,118,0.15)] overflow-hidden flex-shrink-0">
             <div className="absolute inset-0 bg-gradient-to-tr from-[#00e676]/20 via-transparent to-transparent opacity-60" />
             <img 
               src="/logo-ap90.png" 
               alt="Logo AP90" 
-              className="w-10 h-10 object-contain relative z-10 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+              className="w-9 h-9 sm:w-10 sm:h-10 object-contain relative z-10 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
             />
           </div>
           <div className="overflow-hidden">
             <div className="flex items-center gap-2">
-              <span className="font-mono font-extrabold text-xl text-white tracking-wider">AP90</span>
+              <span className="font-mono font-extrabold text-lg sm:text-xl text-white tracking-wider">AP90</span>
               <span className="px-1.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#00e676]/15 text-[#00e676] border border-[#00e676]/30 shadow-[0_0_8px_rgba(0,230,118,0.2)]">
                 PRO
               </span>
@@ -64,10 +79,20 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate }) => 
             </p>
           </div>
         </div>
+
+        {isMobile && onCloseMobile && (
+          <button
+            onClick={onCloseMobile}
+            className="p-2 rounded-xl text-text-secondary hover:text-white hover:bg-white/10 transition-colors"
+            aria-label="Fechar menu"
+          >
+            <X className="w-5 h-5 text-text-secondary hover:text-white" />
+          </button>
+        )}
       </div>
 
       {/* Navigation List */}
-      <div className="flex-1 px-3 py-5 space-y-1.5 overflow-y-auto">
+      <div className="flex-1 px-3 py-4 sm:py-5 space-y-1.5 overflow-y-auto">
         <div className="px-3 pb-2 text-[11px] font-mono uppercase tracking-widest text-text-muted font-semibold flex items-center gap-1.5">
           <Terminal className="w-3.5 h-3.5 text-[#00e676]" />
           <span>Área do Aluno</span>
@@ -81,7 +106,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate }) => 
             return (
               <button
                 key={item.label}
-                onClick={() => onNavigate(item.id)}
+                onClick={() => handleItemClick(item.id)}
                 className={`w-full text-left flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-body transition-all duration-200 ${
                   isActive
                     ? 'active-nav-glow text-[#00e676] font-semibold'
@@ -136,6 +161,34 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate }) => 
           <span className="w-2 h-2 rounded-full bg-[#00e676] shadow-[0_0_8px_#00e676]" />
         </div>
       </div>
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      {/* Desktop Persistent Sidebar */}
+      <aside className="hidden md:flex w-64 h-screen bg-[#090d12]/90 backdrop-blur-2xl border-r border-white/10 flex-col flex-shrink-0 select-none z-20">
+        {renderContent(false)}
+      </aside>
+
+      {/* Mobile Drawer (Slide-over overlay) */}
+      {isOpenMobile && (
+        <div className="fixed inset-0 z-50 md:hidden flex">
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity"
+            onClick={onCloseMobile}
+          />
+          
+          {/* Drawer Panel */}
+          <aside 
+            className="relative w-72 max-w-[85vw] h-full bg-[#090d12] border-r border-white/10 flex flex-col flex-shrink-0 select-none z-10 shadow-2xl animate-in slide-in-from-left duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {renderContent(true)}
+          </aside>
+        </div>
+      )}
+    </>
   );
 };
